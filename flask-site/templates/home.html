@@ -1,0 +1,7 @@
+{% extends 'layout.html' %}
+{% block content %}
+	{% for project in projects %}
+		<h1>Author: {{project.author}}</h1>
+		<h2>Project: {{project.project}}</h2>
+	{% endfor %}
+{% endblock content %}
