@@ -55,39 +55,16 @@ if __name__ == "__main__":
 
     prof_finder = ProfFinder()
 
-    ###### Uncomment the below line if scraped data is not available
-    #prof_finder.get(args['filename'])
+    
+    ###### The following line stores the scraped data in file given by filename
+    ###### Comment the below line if scraped data is already available in path given by filename, say from a previous run
+    prof_finder.get(args['filename'])
     
     df = prof_finder.find(args['query'],args['filename'])
     print(df)
 
 
 
-# index_link = 'https://engineering.stanford.edu'
 
-# grid_link = index_link + '/people/faculty/grid'
-
-# source = requests.get(grid_link).text
-
-# soup = BeautifulSoup(source, 'lxml')
-
-# grid = soup.find('div', class_='view-content')
-
-# profs = grid.find_all('div', class_='views-row')
-
-# with open('allprofs.csv', 'w') as f:
-#     csvwriter = csv.writer(f, delimiter='\t')
-#     csvwriter.writerow(['Name', 'Webpage', 'Work'])
-#     for prof in profs:
-#         try:
-#             prof_page_link = index_link + prof.find('h3').a['href']
-#             prof_source = requests.get(prof_page_link).text
-#             prof_soup = BeautifulSoup(prof_source, 'lxml')
-#             prof_about = prof_soup.find('div', class_='group-s-about')
-#             prof_description = prof_about.find('div', class_='field-item').text
-#             csvwriter.writerow([prof.h3.a.text, prof_page_link, prof_description])
-#         except:
-#             pass
-    
 
 
