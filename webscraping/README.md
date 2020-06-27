@@ -1,0 +1,1 @@
+This is a simple project I used to learn about web scraping. The program allows you to query a list of professors from Stanford Engineering with research interests matching your query. The type of match used is exact phrase match.
