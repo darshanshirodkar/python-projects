@@ -37,4 +37,4 @@ def add():
     return render_template('create.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)#!/usr/bin/env python3
+    app.run(debug=True)
