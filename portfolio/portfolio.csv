@@ -1,0 +1,17 @@
+company name,company ticker,number of shares,cost price,tax rate,currency
+Adobe Inc,ADBE,1,385.83,0,USD
+Adobe Inc,ADBE,31,0,0.53,USD
+Carter's Inc,CRI,124,65.0998,0.25,USD
+Carter's Inc,CRI,332,0,0.53,USD
+Carter's Inc,CRI,214,0,0.53,USD
+Alphabet Inc,GOOGL,146,94.8984,0.25,USD
+Hershey Company,HSY,230,185.3137,0.25,USD
+Hershey Company,HSY,106,192.9875,0,USD
+Hershey Company,HSY,105,0,0.53,USD
+Microsoft Corp,MSFT,2,382.12,0.25,USD
+PepsiCo Inc,PEP,42,0,0.53,USD
+Starbucks Corp,SBUX,81,73.5052,0.25,USD
+Vanguard S&P 500,VSP.TO,30,65.0807,0.25,CAD
+Vanguard Canadian,VVSG.TO,443,50.3577,0.25,CAD
+Adobe Inc,ADBE,260,78,0.20,USD
+Microsoft Corporation,MSFT,329,105.0,0.2,USD
