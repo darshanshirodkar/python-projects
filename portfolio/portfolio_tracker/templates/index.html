@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LEDGER // Portfolio Tracker</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <header class="top-bar">
+    <div class="logo">LEDGER <span>// PORTFOLIO_TRACKER</span></div>
+    <div class="rate-badge">
+      USD/INR: <span id="fx-rate">---</span>
+    </div>
+  </header>
+
+  <main class="container">
+    
+    <!-- Hero: Total Portfolio Value Table -->
+    <section class="card summary-card">
+      <div class="card-header">
+        <h2>TOTAL_PORTFOLIO_SUMMARY</h2>
+        <div class="tax-control">
+          <label for="tax-rate">GLOBAL TAX RATE (%):</label>
+          <input type="number" id="tax-rate" value="15" min="0" max="100" step="0.5">
+        </div>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="data-table summary-table">
+          <thead>
+            <tr>
+              <th>CURRENCY</th>
+              <th>POST-TAX VALUE</th>
+              <th>PRE-TAX VALUE</th>
+              <th>COST BASIS</th>
+              <th>UNREALIZED P&L</th>
+              <th>ESTIMATED TAX</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>USD ($)</strong></td>
+              <td id="sum-posttax-usd"><strong>$0.00</strong></td>
+              <td id="sum-val-usd">$0.00</td>
+              <td id="sum-cost-usd">$0.00</td>
+              <td id="sum-pnl-usd">$0.00</td>
+              <td id="sum-tax-usd" class="text-neg">$0.00</td>
+            </tr>
+            <tr>
+              <td><strong>INR (₹)</strong></td>
+              <td id="sum-posttax-inr"><strong>₹0.00</strong></td>
+              <td id="sum-val-inr">₹0.00</td>
+              <td id="sum-cost-inr">₹0.00</td>
+              <td id="sum-pnl-inr">₹0.00</td>
+              <td id="sum-tax-inr" class="text-neg">₹0.00</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Stock Breakdown (Active Positions) -->
+    <section class="card">
+      <div class="card-header">
+        <h2>STOCK_BREAKDOWN</h2>
+        <button id="btn-refresh" class="btn btn-sm">REFRESH PRICES</button>
+      </div>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>TICKER</th>
+              <th>PORTFOLIO %</th>
+              <th>SHARES</th>
+              <th>AVG COST</th>
+              <th>LIVE PRICE</th>
+              <th>COST BASIS</th>
+              <th>MARKET VALUE</th>
+              <th>UNREALIZED P&L</th>
+              <th>TAX RATE (%)</th>
+              <th>ACTION</th>
+            </tr>
+          </thead>
+          <tbody id="positions-body">
+            <tr><td colspan="10" class="text-muted">Loading positions...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Trade Input -->
+    <section class="card">
+      <h2>EXECUTE_TRANSACTION</h2>
+      <form id="trade-form" class="trade-form">
+        <div class="form-group">
+          <label for="tx-ticker">TICKER</label>
+          <input type="text" id="tx-ticker" placeholder="e.g. AAPL or TCS.NS" required autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label for="tx-action">ACTION</label>
+          <select id="tx-action">
+            <option value="BUY">BUY</option>
+            <option value="SELL">SELL</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tx-currency">CURRENCY</label>
+          <select id="tx-currency">
+            <option value="USD">USD ($)</option>
+            <option value="INR">INR (₹)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="tx-qty">QTY</label>
+          <input type="number" id="tx-qty" step="any" min="0.0001" placeholder="0" required>
+        </div>
+        <div class="form-group">
+          <label for="tx-price">PRICE PER SHARE</label>
+          <input type="number" id="tx-price" step="any" min="0" placeholder="0.00" required>
+        </div>
+        <button type="submit" class="btn">SUBMIT</button>
+      </form>
+      <div id="form-error" class="error-msg hidden"></div>
+    </section>
+
+    <!-- Audit Log Table -->
+    <section class="card">
+      <h2>TRANSACTION_LOG</h2>
+      <div class="table-wrapper">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>TIMESTAMP (UTC)</th>
+              <th>ACTION</th>
+              <th>TICKER</th>
+              <th>SHARES</th>
+              <th>ENTERED PRICE</th>
+              <th>USD PRICE</th>
+              <th>REALIZED P&L (USD)</th>
+            </tr>
+          </thead>
+          <tbody id="transactions-body">
+            <tr><td colspan="7" class="text-muted">Loading log...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="{{ url_for('static', filename='app.js') }}"></script>
+</body>
+</html>
